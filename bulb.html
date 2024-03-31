@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>文侠岛</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+	<link rel="stylesheet" type="text/css" href="tools/pagestyle.css">
+</head>
+
+<body>
+<p id="11"></p>
+	<h1>这是一片神奇的天地</h1>	
+<h2>你可以选择 <a href="javascript:window.alert('成功！')" style="color: black">显示帮助者</a></h2>	
+	<h2>或者你可以<a href="javascript:void(0)" style="color: black"
+				onClick="document.getElementById('bulb').src='src/bulbon.gif'">开灯</a>
+	    或<a href="javascript:void(0)" style="color: black"
+			onClick="document.getElementById('bulb').src='src/bulboff.gif'">关灯</a></h2>
+	<br>
+	<img src="src/bulboff.gif" alt="灯泡" id="bulb">
+	<h3><a onClick="back()" id="back">返回上一页</a></h3>
+
+	<script src="tools/helpback.js"></script>
+	<script src="tools/bulb.js"></script>
+
+	</body>
+</html>

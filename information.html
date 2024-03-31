@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+<title>文侠岛</title>
+	<style>
+body{background-color: #e5d6ad;
+	text-align: center}
+a{color: black;
+	text-decoration-line: underline}
+th{width: 20%}
+tr{height: 30px}
+		.bgn{background-color:#e5d6ad;
+			text-align: center;
+			width: 90%;
+			height: 30px;
+			font-size: 18px}
+		.bttgroup{width: 90px}
+		#btt{width: 70%;
+			height: 45px;
+			font-size: 20px;
+			background-color: lightpink}
+		#bttres{width: 70%;
+			height: 45px;
+			font-size: 20px;
+			background-color: lightpink}
+		#searchbtt{width: 70%;
+		    height: 45px;
+			font-size: 20px;
+		    background-color: lightpink}
+		#pwd{height: 40px;
+			text-align: center;
+		    font-size: 18px}
+		#pwdbtt{height: 40px;
+			text-align: center}
+		#pwdres{height: 40px;
+			text-align: center}
+</style>
+	
+</head>
+
+<body>
+	<h1>文侠岛 信息处理系统</h1>
+	<div id="pwdcheck">
+		<br><br>
+	<h3 style="color: red">使用本系统需要授权码</h3>
+	<input type="password" id="pwd" placeholder="请输入授权码" onKeyUp="pwdokay()" autofocus>
+	<input type="button" id="pwdres" value="重置" onClick="pwdres()">
+	<p id="pwdcheckshow"></p>
+
+	<p style="font-size: 20px">
+		<a href="javascript:void(0)" onClick="tobuy()" id="abuy">点击这里获取授权码</a></p>
+		<div id="pwdshow"></div>
+	</div>
+	
+	<div id="tool" style="display: none">
+	<table align="center" border="6">
+	<tr>
+		<th>文本内容</th>
+		<td>
+			<input type="text" class="bgn" placeholder="请输入文字" id="text" onKeyUp="okpress()">
+		</td>
+		<td rowspan="4" class="bttgroup">
+		<input type="button" value="确定" id="btt" onClick="okay()"><br>
+		<input type="button" id="bttres" value="重置" onClick="bttres()"><br>
+		<input type="button" value="搜索" id="searchbtt" onClick="searchbtt()">
+		</td>
+	</tr>
+	<tr>
+		<th>放大倍数</th>
+		<td>
+			<input type="number" class="bgn" placeholder="请输入数字" id="num" value="150" step="30">
+		</td>
+	</tr>
+	<tr>
+		<th>文本颜色</th>
+		<td>
+			<input type="color" class="bgn" id="col">
+		</td>
+	</tr>
+	<tr>
+	    <th>搜索引擎</th>	
+	    <td>
+		<select class="bgn" id="gethref">
+		<option value="baidu" selected>百度汉语</option>
+		<option value="biying">必应词典</option>
+		<option value="sougou">搜狗搜索</option>
+		</select>
+		</td>
+	</tr>
+	</table>
+	
+<p id="show" style="color: black;font-size: 30px">等待输入………</p>
+	<div id="ifr" style="display: none">
+		<iframe id="ifram" width="92%" height="750px" scrolling="yes"></iframe>
+	</div>
+		</div>
+	
+	<div>
+	<br>
+<h3><a href="javascript:void(0)" onClick="history.back(1)">返回上一页</a></h3>
+<h2>王熙同提供技术支持</h2>
+	</div>
+	
+	<script>
+	function pwdokay(){
+		var password=document.getElementById("pwd").value
+		var textvalue=document.getElementById("pwdcheckshow")
+		if(password=="20220728"){
+			textvalue.innerHTML="授权码正确";
+			document.getElementById("tool").style.display=""
+		    document.getElementById("pwdcheck").style.display="none"
+			document.getElementById("text").focus()
+		}
+		else if(password=="")[
+			textvalue.innerHTML="授权码不能为空"
+		]
+		else {
+			textvalue.innerHTML="授权码错误，请联系管理员获取"
+		}
+	}
+	</script>
+
+	<script>
+	function pwdres(){
+		document.getElementById("pwd").value=""
+		document.getElementById("pwdcheckshow").innerHTML=""
+	}
+	
+	</script>
+
+	<script>
+	function tobuy(){
+		var crea=document.createElement("p")
+		crea.innerHTML="<br><h3>管理员邮箱：pingliprogram2008@163.com</h3>"
+		document.getElementById("pwdshow").appendChild(crea)
+		document.getElementById("abuy").setAttribute('onclick','tobuyres()')
+		document.getElementById("abuy").innerHTML="收起"
+	}
+	</script>
+	
+	<script>
+	function tobuyres(){
+		document.getElementById("pwdshow").style.display="none"
+		document.getElementById("abuy").innerHTML="点击这里获取授权码"
+		document.getElementById("abuy").setAttribute('onclick','toshowbuyagain()')
+		}
+	</script>
+
+	<script>
+	function toshowbuyagain(){
+		document.getElementById("pwdshow").style.display=""
+		document.getElementById("abuy").innerHTML="收起"
+		document.getElementById("abuy").setAttribute('onclick','tobuyres()')
+	}
+	</script>
+	
+	<script>
+	function okay(){
+		var size=document.getElementById("num").value
+		var color=document.getElementById("col").value
+		var text=document.getElementById("text").value
+		   if(text==""){
+		document.getElementById("show").innerHTML="等待输入………"
+		document.getElementById("show").style.color="black"
+		document.getElementById("show").style.fontSize="30px"
+		document.getElementById("ifram").src=""
+		document.getElementById("ifr").style.display="none"
+		}
+	       else{
+		document.getElementById("show").innerHTML=text
+		document.getElementById("show").style.color=color
+		document.getElementById("show").style.fontSize=size+"px"
+		}
+	}
+	</script>
+
+	<script>
+	function okpress(){
+		document.getElementById("btt").click()
+	}
+	
+	</script>
+	
+	<script>
+	var input = document.getElementById("text");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("searchbtt").click();
+    }
+});
+	</script>
+
+	<script>
+	function bttres(){
+		document.getElementById("text").value=""
+		document.getElementById("num").value="150"
+		document.getElementById("col").value="#000000"
+		document.getElementById("show").innerHTML="等待输入………"
+		document.getElementById("show").style.color="black"
+		document.getElementById("show").style.fontSize="30px"
+		document.getElementById("ifram").src=""
+		document.getElementById("ifr").style.display="none"
+		document.getElementById("gethref").value="baidu"
+	}
+	</script>
+	
+	<script>
+	function searchbtt(){
+		var text=document.getElementById("text").value
+		var hrefname=document.getElementById("gethref").value
+		var hrefurl
+		  if(text==""){
+			  window.alert("请输入文本")
+			  document.getElementById("text").focus()
+	   }
+		  else{  
+		if(hrefname=="baidu"){
+			hrefurl="https://hanyu.baidu.com/s?wd="
+		}
+		else if(hrefname=="biying"){
+			hrefurl="https://cn.bing.com/dict/search?q="
+		}  
+		else if(hrefname=="sougou"){
+			hrefurl="https://www.sogou.com/web?query="
+		}
+		document.getElementById("ifr").style.display=""
+		document.getElementById("ifram").src=hrefurl+text
+		}
+	}
+	</script>
+	
+	
+</body>
+</html>

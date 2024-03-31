@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+<title>文侠岛</title>
+<link rel="stylesheet" type="text/css" href="tools/pagestyle.css">
+</head>
+
+<body>
+   <h1><img src="src/icon.png" alt="文侠岛">测试页</h1>
+	
+	<input type="text" id="name" placeholder="请输入姓名">
+	<input type="button" onClick="handin()" id="handin" value="提交">
+	<br><br><h3><a onClick="back()" id="back">返回上一页</a></h3>
+    <br><p>2022.3.30</p>	
+    <h2><p id="helper"></p></h2>
+	
+	<script>
+	var input = document.getElementById("name");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("handin").click();
+    }
+});
+	
+	</script>
+	
+	<p id="p"></p>
+	<script> 
+		var name="你好！"
+		document.getElementById("p").innerHTML=name
+	</script>
+	
+	<script>
+	
+	function handin(){
+		var name=document.getElementById("name").value;
+		if(name=='王熙同' || name=='杜凤'){window.alert("贵宾"+name+"，您好！");}
+		else if(name=='哈哈哈'){window.alert(name+"你好，具体事宜请找王熙同商谈")}
+		else if(name==''){window.alert("请输入姓名！")}
+		else if(name=='宋佳音'){document.getElementById("name").value="女士"}
+        else {window.alert("对不起，没有"+name+"的账号")}		
+	}
+	</script>
+
+	<script src="tools/helpback.js"></script>
+	
+</body>
+</html>

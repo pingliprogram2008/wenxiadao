@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+<title>文侠岛</title>
+	<link rel="stylesheet" type="text/css" href="tools/pagestyle.css">
+</head>
+
+<body>
+	<h1><img src="src/icon.png" alt="文侠岛">提示</h1>
+	<img src="src/error.png" alt="发生未知错误">
+	<div style="color: red">
+	<h3>发生了一些未知的错误</h3>
+	<h3>但是您可以<a onClick="back()" id="back" style="color: blue">返回上一页</a></h3></div>
+	<p>当前时间:<br><span id="time"></span></p>
+	
+<h2><p id="helper"></p></h2>
+<script>
+	var nw=new Date()
+	var y=nw.getFullYear()
+	var m=nw.getMonth()+1
+	var dat=nw.getDate()
+	var h=nw.getHours()
+	var min=nw.getMinutes()
+	var day=nw.getDay()
+	var truday
+if(day==0){truday="日"}
+else if(day==1){truday="一"}
+else if(day==2){truday="二"}
+else if(day==3){truday="三"}
+else if(day==4){truday="四"}
+else if(day==5){truday="五"}
+else if(day==6){truday="六"}
+else{truday="？"}
+	document.getElementById("time").innerHTML=y+"年"+m+"月"+dat+"日"+"星期"+truday+" "+h+"时"+min+"分"
+	</script>
+<script src="tools/helpback.js"></script>
+</body>
+</html>
